@@ -37,3 +37,45 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 ```
 argocd account update-password
 ```
+
+5. Register A Cluster To Deploy Apps To (Optional)¶
+
+- This step registers a cluster's credentials to Argo CD, and is only necessary when deploying to an external cluster. When deploying internally (to the same cluster that Argo CD is running in), https://kubernetes.default.svc should be used as the application's K8s API server address.
+
+- First list all clusters contexts in your current kubeconfig:
+```
+kubectl config get-contexts -o name
+```
+
+- Choose a context name from the list and supply it to argocd cluster add CONTEXTNAME. For example, for docker-desktop context, run:
+```
+argocd cluster add docker-desktop
+```
+
+- Create the 'Application project' process step here or copy the below (amend where applicable):
+https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+```
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-argo-application #amend
+  namespace: argocd 
+spec:
+  project: default #amend
+
+  source:
+    repoURL: https://github.com/Louispettitt/ArgoCD.git #amend
+    targetRevision: HEAD
+    path: dev #amend
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: myapp #amend
+
+  syncPolicy: #amend
+    syncOptions:
+    - CreateNamespace=true
+
+    automated: #amend
+      selfHeal: true
+      prune: true
+```
