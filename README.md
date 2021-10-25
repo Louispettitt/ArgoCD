@@ -79,3 +79,6 @@ spec:
       selfHeal: true
       prune: true
 ```
+
+- See operator manual for more configuration options:
+https://argo-cd.readthedocs.io/en/stable/operator-manual/
