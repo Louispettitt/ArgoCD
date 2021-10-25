@@ -28,7 +28,7 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
-- For better readability, e.g. if you want to copy & paste the generated password, you can simply append && echo to above command, which will add a newline to the output.
+- For better readability, e.g. if you want to copy & paste the generated password, you can simply append ```&& echo``` to above command, which will add a newline to the output.
 
 - WARNING: You should delete the argocd-initial-admin-secret from the Argo CD namespace once you changed the password. The secret serves no other purpose than to store the initially generated password in clear and can safely be deleted at any time. It will be re-created on demand by Argo CD if a new admin password must be re-generated.
 
