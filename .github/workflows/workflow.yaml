@@ -8,6 +8,6 @@ jobs:
       - name: Sync ArgoCD Application
         uses: omegion/argocd-app-actions@master
         with:
-          address: "https://github.com/Louispettitt/ArgoCD.git"
+          address: "https://kubernetes.default.svc"
           token: ${{ secrets.ARGOCD_TOKEN }}
           appName: "myapp-argo-application"
