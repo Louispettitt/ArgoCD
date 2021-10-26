@@ -1,0 +1,13 @@
+name: My Workflow
+on: [ push, pull_request ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Sync ArgoCD Application
+        uses: omegion/argocd-app-actions@master
+        with:
+          address: "https://github.com/Louispettitt/ArgoCD.git"
+          token: ${{ secrets.ARGOCD_TOKEN }}
+          appName: "myapp-argo-application"
