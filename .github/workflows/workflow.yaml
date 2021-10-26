@@ -8,6 +8,6 @@ jobs:
       - name: Sync ArgoCD Application
         uses: omegion/argocd-app-actions@master
         with:
-          address: "https://kubernetes.default.svc"
-          token: ${{ secrets.ARGOCD_TOKEN }}
-          appName: "myapp-argo-application"
+          address: "127.0.0.1:8080" #ArgoCD server address. Also try - "localhost:443" or just "localhost"
+          token: ${{ secrets.ARGOCD_TOKEN }} # ArgoCD Token.
+          appName: "myapp-argo-application" # Application name to sync.
