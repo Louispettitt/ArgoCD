@@ -22,6 +22,17 @@ brew install argocd
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
+- Service Type Load Balancer
+- Change the argocd-server service type to LoadBalancer:
+```
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+```
+
+- Ingress
+- Follow the ingress documentation on how to configure Argo CD with ingress.
+
+
+
 4. Login Using The CLI
 - The initial username is 'admin'.
 - The initial password for the admin account is auto-generated and stored as clear text in the field password in a secret named argocd-initial-admin-secret in your Argo CD installation namespace. You can simply retrieve this password using kubectl:
