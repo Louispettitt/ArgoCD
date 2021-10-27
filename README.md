@@ -97,3 +97,6 @@ https://argo-cd.readthedocs.io/en/stable/operator-manual/
 HELP:
 - If you get the following ```FATA[0000] Argo CD server address unspecified``` then make sure you are logged in from the CLI:
 - Are you running argocd server locally, as a process? In this case you can use argocd login localhost:8080.
+
+- Encode argocd token by using the following syntax:
+- echo -n 'super-secret-password' | base64
