@@ -37,7 +37,7 @@ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}
 - The initial username is 'admin'.
 - The initial password for the admin account is auto-generated and stored as clear text in the field password in a secret named argocd-initial-admin-secret in your Argo CD installation namespace. You can simply retrieve this password using kubectl:
 ```
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
 ```
 - For better readability, e.g. if you want to copy & paste the generated password, you can simply append ```&& echo``` to above command, which will add a newline to the output.
 
@@ -96,7 +96,7 @@ https://argo-cd.readthedocs.io/en/stable/operator-manual/
 
 HELP:
 - If you get the following ```FATA[0000] Argo CD server address unspecified``` then make sure you are logged in from the CLI:
-- Are you running argocd server locally, as a process? In this case you can use argocd login localhost:8080.
+- Are you running argocd server locally, as a process? In this case you can use ```argocd login localhost:8080```.
 
 - Encode argocd token by using the following syntax:
 - echo -n 'super-secret-password' | base64
