@@ -8,6 +8,6 @@ jobs:
       - name: Sync ArgoCD Application
         uses: omegion/argocd-app-actions@master
         with:
-          address: "localhost:443" #ArgoCD server address. Also try - "localhost:443" or just "localhost"
+          address: "localhost" #ArgoCD server address. Also try - "localhost:443" or just "localhost"
           token: ${{ secrets.ARGOCD_TOKEN }} # ArgoCD Token.
           appName: "myapp-argo-application" # Application name to sync.
