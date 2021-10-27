@@ -92,7 +92,14 @@ spec:
 ```
 
 Install Argo CD Image Updater
-- kubectl apply -n default -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/v0.9.0/manifests/install.yaml
+- ```kubectl apply -n default -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/v0.9.0/manifests/install.yaml```
+
+Annotate App:
+```
+    kubectl annotate app myapp-argo-application \
+    argocd-image-updater.argoproj.io/image-list=gcr.io/heptio-images/ks-guestbook-demo \
+    argocd-image-updater.argoproj.io/write-back-method=git
+```
 
 - See operator manual for more configuration options:
 https://argo-cd.readthedocs.io/en/stable/operator-manual/
