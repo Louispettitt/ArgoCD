@@ -5,7 +5,7 @@ https://argo-cd.readthedocs.io/en/stable/getting_started/
 1. Install Argo CD
 
 - kubectl create namespace argocd
-- kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+- kubectl apply -n argocd -f argocd-install.yaml
 
 2. Download Argo CD CLI
 
@@ -89,16 +89,6 @@ spec:
     automated: #amend
       selfHeal: true
       prune: true
-```
-
-Install Argo CD Image Updater
-- ```kubectl apply -n default -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/v0.9.0/manifests/install.yaml```
-
-Annotate App:
-```
-    kubectl annotate app myapp-argo-application \
-    argocd-image-updater.argoproj.io/image-list=gcr.io/heptio-images/ks-guestbook-demo \
-    argocd-image-updater.argoproj.io/write-back-method=git
 ```
 
 - See operator manual for more configuration options:

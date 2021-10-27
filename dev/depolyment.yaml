@@ -3,11 +3,8 @@ kind: Deployment
 metadata:
   name: guestbook-ui
   namespace: myapp
-  annotations: 
-   argocd-image-updater.argoproj.io/image-list: gcr.io/heptio-images/ks-guestbook-demo
-   argocd-image-updater.argoproj.io/write-back-method: git
 spec:
-  replicas: 3
+  replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
