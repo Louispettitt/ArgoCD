@@ -91,6 +91,9 @@ spec:
       prune: true
 ```
 
+Install Argo CD Image Updater
+- kubectl apply -n default -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/v0.9.0/manifests/install.yaml
+
 - See operator manual for more configuration options:
 https://argo-cd.readthedocs.io/en/stable/operator-manual/
 
