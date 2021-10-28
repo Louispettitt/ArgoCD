@@ -39,8 +39,6 @@ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}
 ```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
 ```
-- For better readability, e.g. if you want to copy & paste the generated password, you can simply append ```&& echo``` to above command, which will add a newline to the output.
-
 - WARNING: You should delete the argocd-initial-admin-secret from the Argo CD namespace once you changed the password. The secret serves no other purpose than to store the initially generated password in clear and can safely be deleted at any time. It will be re-created on demand by Argo CD if a new admin password must be re-generated.
 
 
@@ -49,7 +47,7 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 argocd account update-password
 ```
 
-5. Register A Cluster To Deploy Apps To (Optional)¶
+5. Register A Cluster To Deploy Apps To (***Optional***)
 
 - This step registers a cluster's credentials to Argo CD, and is only necessary when deploying to an external cluster. When deploying internally (to the same cluster that Argo CD is running in), https://kubernetes.default.svc should be used as the application's K8s API server address.
 
