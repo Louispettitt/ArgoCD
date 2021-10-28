@@ -8,12 +8,10 @@ kubectl -n argocd delete secret argocd-initial-admin-secret
 
 sleep 5s
 
+open http://127.0.0.1:8080
+
 echo "Accessing ArgoCD UI."
 kubectl port-forward svc/argocd-server -n argocd 8080:443
-
-sleep 5s
-
-open http://127.0.0.1:8080
 
 #WARNING: You should delete the argocd-initial-admin-secret from the Argo CD namespace once you changed the password. 
 #The secret serves no other purpose than to store the initially generated password in clear and can safely be deleted at any time. 

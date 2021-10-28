@@ -1,3 +1,5 @@
+echo "Deploying ArgoCD with test application"
+
 kubectl create ns argocd
 
 kubectl apply -f /Users/$USER/Repositories/argocd/ArgoCD-1/argocd-install.yaml -n argocd
@@ -13,3 +15,5 @@ echo "Please wait 30 seconds for message - Deployment complete - so pods have ti
 sleep 30s
 
 echo "Deployment complete."
+
+. /Users/$USER/Repositories/argocd/ArgoCD-1/scripts/login.sh
