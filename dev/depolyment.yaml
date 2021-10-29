@@ -21,7 +21,7 @@ spec:
         app: wd        
     spec:
       containers:                    
-        - image: karolisr/webhook-demo:0.0.8
+        - image: karolisr/webhook-demo:0.0.15
           imagePullPolicy: Always            
           name: wd
           command: ["/bin/webhook-demo"]
