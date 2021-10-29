@@ -1,3 +1,7 @@
+echo "Deploying Keel"
+
+kubectl apply -f /Users/$USER/Repositories/argocd/ArgoCD-1/keel/deployment.yaml
+
 echo "Deploying ArgoCD with test application"
 
 kubectl create ns argocd
