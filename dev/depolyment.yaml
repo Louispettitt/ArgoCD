@@ -1,23 +1,24 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
-metadata:
-  name: guestbook-ui
+metadata: 
+  name: wd
   namespace: myapp
+  labels: 
+    name: "wd"
   annotations:
-    keel.sh/policy: all
+    keel.sh/policy: minor # <-- policy name according to https://semver.org/
+    keel.sh/trigger: poll # <-- actively query registry, otherwise defaults to webhooks
 spec:
-  replicas: 1
-  revisionHistoryLimit: 3
-  selector:
-    matchLabels:
-      app: guestbook-ui
   template:
     metadata:
+      name: wd
       labels:
-        app: guestbook-ui
+        app: wd        
     spec:
-      containers:
-      - image: gcr.io/heptio-images/ks-guestbook-demo:0.1
-        name: guestbook-ui
-        ports:
-        - containerPort: 80
+      containers:                    
+        - image: karolisr/webhook-demo:0.0.8
+          imagePullPolicy: Always            
+          name: wd
+          command: ["/bin/webhook-demo"]
+          ports:
+            - containerPort: 8090
