@@ -9,6 +9,11 @@ metadata:
     keel.sh/policy: minor # <-- policy name according to https://semver.org/
     keel.sh/trigger: poll # <-- actively query registry, otherwise defaults to webhooks
 spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: wd
   template:
     metadata:
       name: wd
