@@ -8,7 +8,7 @@ spec:
 
   source:
     repoURL: https://github.com/Louispettitt/ArgoCD.git
-    targetRevision: HEAD
+    targetRevision: HEAD # Head of current branch. In Prod, we would use Master branch as to not create update loops in Dev/Pre-prod environments.
     path: dev
   destination: 
     server: https://kubernetes.default.svc
